@@ -1,0 +1,107 @@
+/* .card-days {
+    background-color: rgb(38, 116, 246);
+    color: white;
+}
+
+.card-death {
+    background-color: rgb(215, 25, 28);
+    color: white;
+}
+
+.card-total {
+    background-color: aqua;
+    color: white;
+}
+
+.card-recovered {
+    background-color: rgb(26, 150, 34);
+    color: white;
+} */
+
+html * {
+    font-family: "Open Sans", verdana, arial, sans-serif;
+}
+
+.modebar {
+    display: none !important;
+}
+
+.card-days {
+    background: #ff00cc;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #333399, #ff00cc);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #333399, #ff00cc);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}
+
+.card {
+    box-shadow: rgb(237, 237, 238) 0px 0px 10px;
+    border: 1px solid rgb(237, 237, 238);
+}
+
+.card-death {
+    background: #c31432;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #240b36, #c31432);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #240b36, #c31432);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}
+
+.card-total {
+    background: #ff7e5f;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #5e5b5a, #fd552d);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #5e5b5a, #fd552d);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}
+
+.card-recovered {
+    background: #4ECDC4;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #556270, #4ECDC4);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #556270, #4ECDC4);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.indiaMapIF {
+    width: 100%;
+}
+
+#folium-map {
+    height: 100%;
+}
+
+.white {
+    color: white;
+}
+
+.m-l-r-20 {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    margin-bottom: 15px !important;
+}
+
+.h5-16 {
+    font-size: 16px !important;
+}
+
+.tab-content>.tab-pane:not(.active) {
+    display: block !important;
+    height: 0 !important;
+    overflow-y: hidden !important;
+}

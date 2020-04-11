@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+      shrink-to-fit=no">
+    <meta http-equiv="refresh" content="900">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css">
+
+
+    <!-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-->
+
+    <!-- Datatables -->
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static',filename='favicons/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static',filename='favicons/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static',filename='favicons/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static',filename='favicons/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static',filename='favicons/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static',filename='favicons/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static',filename='favicons/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static',filename='favicons/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static',filename='favicons/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ url_for('static',filename='favicons/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static',filename='favicons/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='favicons/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static',filename='favicons/manifest.json') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ url_for('static',filename='favicons/ms-icon-144x144.png') }}">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    
+    <script charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script rel="stylesheet" href="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        html * {
+            font-family: "Open Sans", verdana, arial, sans-serif;
+        }
+        .modebar{
+            display: none !important;
+        }
+        .card-days {
+            background: #ff00cc;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #333399, #ff00cc);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #333399, #ff00cc);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white;
+        }
+
+        
+        .card {
+            box-shadow: rgb(237, 237, 238) 0px 0px 10px;
+            border: 1px solid rgb(237, 237, 238);
+        }
+        
+        .card-death {
+            background: #c31432;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #240b36, #c31432);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #240b36, #c31432);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white;
+        }
+        
+        .card-total {
+            background: #ff7e5f;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #5e5b5a, #fd552d);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #5e5b5a, #fd552d);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white;
+        }
+        
+        .card-recovered {
+            background: #4ECDC4;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #556270, #4ECDC4);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #556270, #4ECDC4);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            color: white;
+        }
+        
+        h3 {
+            font-size: 18px;
+        }
+
+        .indiaMapIF {
+            width: 100%;
+
+        }
+
+        #folium-map {
+            height: 100%;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .m-l-r-20 {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            margin-bottom: 15px !important;
+        }
+
+        .h5-16 {
+            font-size: 16px !important;
+        }
+    </style>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163217872-1"></script>
+    <script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-163217872-1');
+    </script>
+
+
+    <title>COVID-19 Global Dashboard</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand">COVID - 19 Global Dashboard</a>
+       <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+    </nav>
+    
+    <div class="row mx-3">
+        <p id="time-stamp" style="padding-left: 1rem; max-width: 150rem; margin: 2rem 0 1rem 0; font-family: 'Roboto', 'Helvetica', 'Arial', 'sans-serif'; border-left: #8ec6c5 solid .5rem;">
+            Last updated: {{last_update}} GMT+05:30. (If you are experiencing issue in viewing and interacting with plots in mobile devices, please view the site in desktop mode, till the issue is fixed.)
+        </p>
+    </div>
+
+    <div class="row mt-3 mx-3">
+        <div class="col-md-3 mb-2 mt-2 px-1">
+            <div class="card card-color text-center">
+                <div class="card-body text-primary">
+                    <h5><br></h5>
+                    <h1><b>{{ wdays }}</b></h1>
+                    <h3>DAYS SINCE OUTBREAK</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-2 mt-2 px-1">
+            <div class="card card-color text-center">
+                <div class="card-body text-warning">
+                    <h5>+ <b>{{"{:,}".format(wc24h)}}</b> cases in past 24h ({{'%0.2f%%'| format(wc24h/wconf*100 | float)}})</h5>
+                    <h1><b>{{ "{:,}".format(wconf) }}</b></h1>
+                    <h3>TOTAL CASES</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-2 mt-2 px-1">
+            <div class="card card-color text-center">
+                <div class="card-body text-success">
+                    <h5>+ <b>{{"{:,}".format(wr24h)}}</b> cases in past 24h ({{'%0.2f%%'| format(wr24h/wrecoverd*100 | float)}})</h5>
+                    <h1><b>{{ "{:,}".format(wrecoverd) }}</b></h1>
+                    <h3>TOTAL RECOVERED</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-2 mt-2 px-1">
+            <div class="card card-color text-center">
+                <div class="card-body text-danger">
+                    <h5>+ <b>{{"{:,}".format(wd24h)}}</b> cases in past 24h ({{'%0.2f%%'| format(wd24h/wdeath*100 | float)}})</h5>
+                    <h1><b>{{ "{:,}".format(wdeath) }}</b></h1>
+                    <h3>TOTAL DEATHS</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-center m-l-r-20 my-2">
+        <h2><b>Global Data</b></h2>
+    </div>
+    <!-- World Map-->
+    <div class="card m-l-r-20">
+        <div class="row my-3 mx-3">
+            <div class="col-md-6">
+                <h6 style="font-size:17px"><b>CORONAVIRUS Spread across the Globe</b></h6>
+                <div id="worldMap">
+                </div>
+            </div>
+            <div class="col-md-6 table-responsive">
+                <table class="table table-bordered" id="worldTable">
+                    <thead class="thead-dark">
+                            <th>Region</th>
+                            <th>Total Cases</th>
+                            <th>Deaths</th>
+                            <th>Recovered</th>
+                            <th>Active</th>
+                    </thead>
+                    <tbody>
+                        {% for data in world_table %}
+                        <tr>
+                            <td>{{ data["Locations"]}}</td>
+                            <td>{{ data["Confirmed_Cases"]}}</td>
+                            <td>{{ data["Deaths"]}}</td>
+                            <td>{{ data["Recovered"]}}</td>
+                            <td>{{ data["Active"]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-center m-l-r-20 mt-3 mb-1">
+        <h2><b>Global Trends</b></h2>
+    </div>
+    <!-- Data for 20 most affected countries-->
+    <div class="card mb-3 m-l-r-20">
+        <div class="row mt-3 mx-3">
+            <div class="col-md-12">
+                <div id="c20_lp">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div id="d20_lp">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div id="r20_lp">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- India's Map-->
+    <div class="card mt-2 text-center m-l-r-20 my-2">
+        <h2><b>India Data</b></h2>
+    </div>
+    <div class="card mb-3 m-l-r-20">
+        <div class="row mt-3 mx-3">
+            <div class="col-md-6">
+                <div id="indiaMap" style="height:500px">
+                    <h4 align="justify" style="font-size:17px"><b>Total cases in India (including Foreign National)</b></h4>
+                    <h6 align="justify" style="font-size:13px"><i>Hover over the State/UT to check the respective case counts</i></h6>
+                    <iframe class="indiaMapIF" src="/map" scrolling="no"  style="width: 100%; height: 100%;" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 table-responsive">
+                <table class="table table-bordered" id="indiaTable">
+                    <thead class="thead-dark">
+                            <th>State/UT</th>
+                            <th>Total Cases</th>
+                            <th>Active Cases</th>
+                            <th>Deaths</th>
+                            <th>Recovered</th>
+                    </thead>
+                    <tbody>
+                        {% for data in india_table %}
+                        <tr>
+                            <td>{{ data["State/UT"]}}</td>
+                            <td>{{ data["Total Confirmed cases (including Foreign National)"]}}</td>
+                            <td>{{ data["Active"]}}</td>
+                            <td>{{ data["Death"]}}</td>
+                            <td>{{ data["Cured/Discharged/Migrated"]}}</td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exponential Growth of Cases and Linear Trends in India -->
+    <div class="card mt-2 text-center m-l-r-20 my-2">
+        <h2><b>India Trends</b></h2>
+    </div>
+    <div class="card m-l-r-20">
+        <!-- Exponential Growth of Cases in India -->
+        <div class="row mt-5 mx-3">
+            <div class="col-md-12">
+                <h6><b>Exponential Growth Rate of confirmed cases in India - Whether we wining against CORONA!</b></h6>
+                <i style="font-size:12px">View Logarithmic growth rate for a range of period by selecting the range in bottom slider.</i>
+                <i style="font-size:12px">Hover over data points to view the date and corresponding new cases count</i><br>
+                <div id="cind_exp">
+                </div>
+            </div>
+        
+        <!-- Data for India-->
+            <div class="col-md-12">
+                <h6><b>Total confirmed cases: India</b></h6>
+                <div id="cind_lp">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h6><b>Total Death cases: India</b></h6>
+                <div id="dind_lp">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h6><b>Total Recovered cases: India</b></h6>
+                <div id="rind_lp">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card m-l-r-20 mt-2">
+    	<div class="text-center">
+            <br>
+                <h6><b>For District Wise Reported Cases data <a href="{{dist_link}}" target="_blank">click here</a></b></h6>
+            <br>
+	    </div>
+    </div>
+
+    <!-- Sources Specified -->
+    <div class="row mx-3">
+        <p id="time-stamp" style="padding-left: 1rem; max-width: 150rem; margin: 2rem 0 1rem 0; font-family: 'Roboto', 'Helvetica', 'Arial', 'sans-serif'; border-left: #8ec6c5 solid .5rem;">
+            Sources of the data: <a href="https://www.mohfw.gov.in/" target="_blank">MOHFW</a> | 
+            <a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019/" target="_blank">Wikipedia</a> | 
+            <a href="https://coronavirus.jhu.edu/data" target="_blank">Johns Hopkins University</a> | 
+            <a href="https://www.google.com/covid19/" target="_blank">Google COVID Data</a>
+        </p>
+    </div>
+
+    <footer class="mt-5 footer footer-navbar p-2 bg-dark">
+	<div class="white text-center m-l-r-20 mt-2">
+		Government Helpline Number: +91-11-23978046 | Toll Free : 1075 | Helpline Email ID: ncov2019@gov.in | <a href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf" target="_blank">States &amp; Union Territories Wise Helpline Numbers</a><br>
+		Arogya Setu App:<br>
+		<a href="http://bit.ly/AarogyaSetu_PS" target="_blank"><img src="/static/google-play-badge.png" alt="Android" width="144" height="72"></a> <a href="https://apple.co/2X1KMzO" target="_blank"><img src="/static/App_Store_Badge.svg" alt="IOS" width="144" height="72"></a>
+	</div>
+	<br>								    
+    <h5 class="h5-16 text-center white mt-3">Made in India with <span class="text-danger">❤️</span> by <a href="https://in.linkedin.com/in/nisargfrd" target="_blank">Nisarg Desai</a>
+     | Powered by <a href="https://wittymoves.com" target="_blank">Wittymoves.com</a></h5>
+    <h5 class="h5-16  text-center text-danger">#StayHome <span class="text-primary">#StaySafe</span> </h5>
+    </footer>
+
+
+
+    <!-- D3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <!-- jQuery -->
+    <!--
+        Edited by Nisarg: Commented the query
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    -->
+    
+    <!-- Plotly.js -->
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script>
+    
+    $.noConflict();
+    $(document).ready( function () {
+            $('#worldTable').DataTable( {
+        "order": [[ 1, "desc" ]]
+    } );
+    });
+
+    $(document).ready( function () {
+            $('#indiaTable').DataTable( {
+        "order": [[ 1, "desc" ]]
+    } );
+    });
+    
+    // Make the India map responsive:
+    $(document).ready(function () {
+        $('iframe').on('load', function() {
+            $("iframe").contents().find("div").css("height", "65%");
+        });
+    });
+
+    //<!-- World Map plot-->
+    var graphs = {{a | safe}}
+    Plotly.plot('worldMap', graphs || {});
+
+    //<!-- Confirm cases Line plot for 20 Most affected countries-->
+    var c20_graphs = {{c20lplot | safe}}
+    Plotly.plot('c20_lp', c20_graphs || {});
+
+    //<!-- Death cases Line plot for 20 Most affected countries-->
+    var d20_graphs = {{d20lplot | safe}}
+    Plotly.plot('d20_lp', d20_graphs || {});
+
+    //<!-- Recovered cases Line plot for 20 Most affected countries-->
+    var r20_graphs = {{r20lplot | safe}}
+    Plotly.plot('r20_lp', r20_graphs || {});
+
+    //<!-- Confirm cases Line plot for India-->
+    var cind_graphs = {{cindlplot | safe}}
+    Plotly.plot('cind_lp', cind_graphs || {});
+
+    //<!-- Death cases Line plot for India-->
+    var dind_graphs = {{dindlplot | safe}}
+    Plotly.plot('dind_lp', dind_graphs || {});
+
+    //<!-- Recovered cases Line plot for India-->
+    var rind_graphs = {{rindlplot | safe}}
+    Plotly.plot('rind_lp', rind_graphs || {});
+
+    //<!-- Conf cases Exponential plot for India-->
+    var cind_exp_graphs = {{cindexpplot | safe}}
+    Plotly.plot('cind_exp', cind_exp_graphs || {});
+
+    </script>
+    </body>
+
+</html>
